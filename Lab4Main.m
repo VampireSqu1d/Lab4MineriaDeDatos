@@ -7,6 +7,10 @@ VersicolourDatos = irisCSVCorregido((MapaVersicolour), :);
 MapaVirginica = irisCSVCorregido(:,5)==3;
 VirginicaDatos = irisCSVCorregido((MapaVirginica), :);
 
+Sa= mean(SetosaDatos);
+Ve= mean(VersicolourDatos);
+Vi= mean(VirginicaDatos);
+
 %datos sin etiqueta de clase
 irisTrain = irisCSVCorregido;
 irisTrain(:, 5) = [];
@@ -39,6 +43,10 @@ tipoLinea = ".";
 % hold off
 
 ClusterLabels = asignarclusters(irisTrain,Clusters);
+
+
+Clusters = RecalcularCentroides(irisTrain,ClusterLabels);
+
 
 
 
