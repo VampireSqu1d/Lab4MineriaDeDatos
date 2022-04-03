@@ -6,20 +6,17 @@ MapaVersicolour = irisCSVCorregido(:,5)==2;
 VersicolourDatos = irisCSVCorregido((MapaVersicolour), :);
 MapaVirginica = irisCSVCorregido(:,5)==3;
 VirginicaDatos = irisCSVCorregido((MapaVirginica), :);
-
 Sa= mean(SetosaDatos);
 Ve= mean(VersicolourDatos);
 Vi= mean(VirginicaDatos);
-
 %datos sin etiqueta de clase
 irisTrain = irisCSVCorregido;
 irisTrain(:, 5) = [];
 irisTrainx10 = irisTrain * 10;
-
 %se llama a la funcion para generar las coordenadas aleatorias iniciales de
 %los centroides
-Cantidad = 3;
-Clusters = GenerarPosicionClusters(Cantidad, irisTrainx10) / 10;
+k = 3;
+Clusters = GenerarPosicionClusters(k, irisTrainx10) / 10;
 
 grosor = 10;
 tipoLinea = ".";
@@ -42,12 +39,7 @@ tipoLinea = ".";
 % title("Sépalos");
 % hold off
 
-ClusterLabels = asignarclusters(irisTrain,Clusters);
-
-
-Clusters = RecalcularCentroides(irisTrain,ClusterLabels);
-
-
-
-
-
+for c=1:k
+    ClusterLabels = asignarclusters(irisTrain,Clusters);
+    Clusters = RecalcularCentroides(irisTrain,ClusterLabels);
+end
