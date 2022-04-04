@@ -28,6 +28,13 @@ for c=1: z
     end
 end
 
+for j=1: size(acertividad)
+    if acertividad(j,1) > 100
+        temp = acertividad(j,1) - 100;
+        acertividad(j,1) = 100 - temp;
+    end
+end
+
 outputArg1 = [Clusters Labels acertividad];
 end
 
