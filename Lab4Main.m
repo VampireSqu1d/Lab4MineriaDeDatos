@@ -66,7 +66,7 @@ hold off
 
 ClustersLabeled = Acertividad(Clusters, Sa, Ve, Vi);
 
-
+acertividadTotal = mean(ClustersLabeled(:,6));
 
 
 
